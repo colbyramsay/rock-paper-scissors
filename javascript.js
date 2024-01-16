@@ -1,34 +1,49 @@
 function getComputerChoice() {
-    const weapons = ["Rock", "Paper", "Scissors"];
+    const weapons = ["ROCK", "PAPER", "SCISSORS"];
     let weapon = weapons [Math.floor(Math.random() * weapons.length)];
-    return weapon.toLowerCase();
+    return weapon;
 }
 
-let userWeapon = prompt("Please enter Rock, Paper, or Scissors").toLowerCase();
+function getPlayerChoice() {
+        
+        var userWeapon = "";
 
-let playerSelection = userWeapon;
-console.log("Player:",playerSelection);
+        while (userWeapon != "ROCK" && userWeapon != "PAPER" && userWeapon != "SCISSORS") {
+                var userWeapon = prompt("Please enter ROCK, PAPER, or SCISSORS").toUpperCase();
+                alert ("You chose " + userWeapon);
+                if (userWeapon != "ROCK" && userWeapon != "PAPER" && userWeapon != "SCISSORS") {
+                alert ("INVALID ENTRY! Please enter only Rock, ROCK, PAPER, or SCISSORS");
+                } else {
+                        break;
+                }
+        }
+
+        return userWeapon;
+}
+
+let playerSelection = getPlayerChoice();
 let computerSelection = getComputerChoice();
-console.log("Computer:",computerSelection);
+alert("Player: " + playerSelection + " vs. Computer: " + computerSelection);
 
-if (computerSelection === "rock" && playerSelection === "rock") {
-    console.log("We have a tie!");
-} else if (computerSelection === "rock" && playerSelection === "paper") {
-        console.log("Player wins! Paper beats rock.");
-} else if (computerSelection === "rock" && playerSelection === "scissors") {
-        console.log("Computer wins! Rock beats scissors.");
-} else if (computerSelection === "paper" && playerSelection === "paper") {
-    console.log("We have a tie!");
-} else if (computerSelection === "paper" && playerSelection === "scissors") {
-        console.log("Player wins! Scissors beat paper.");
-} else if (computerSelection === "paper" && playerSelection === "rock") {
-        console.log("Computer wins! Paper beats rock.");
-} else if (computerSelection === "scissors" && playerSelection === "scissors") {
-    console.log("We have a tie!");
-} else if (computerSelection === "scissors" && playerSelection === "rock") {
-        console.log("Player wins! Rock beats scissors.");
-} else if (computerSelection === "scissors" && playerSelection === "paper") {
-        console.log("Computer wins! Scissors beats paper.");
+
+if (computerSelection === "ROCK" && playerSelection === "ROCK") {
+    alert("We have a tie!");
+} else if (computerSelection === "ROCK" && playerSelection === "PAPER") {
+        alert("Player wins! PAPER beats ROCK.");
+} else if (computerSelection === "ROCK" && playerSelection === "SCISSORS") {
+        alert("Computer wins! ROCK beats SCISSORS.");
+} else if (computerSelection === "PAPER" && playerSelection === "PAPER") {
+        alert("We have a tie!");
+} else if (computerSelection === "PAPER" && playerSelection === "SCISSORS") {
+        alert("Player wins! SCISSORS beat PAPER.");
+} else if (computerSelection === "PAPER" && playerSelection === "ROCK") {
+        alert("Computer wins! PAPER beats ROCK.");
+} else if (computerSelection === "SCISSORS" && playerSelection === "SCISSORS") {
+        alert("We have a tie!");
+} else if (computerSelection === "SCISSORS" && playerSelection === "ROCK") {
+        alert("Player wins! ROCK beats SCISSORS.");
+} else if (computerSelection === "SCISSORS" && playerSelection === "PAPER") {
+        alert("Computer wins! SCISSORS beats PAPER.");
 } else {
-    console.log("Invalid entry.");
+        alert("Invalid entry!");
 }
