@@ -1,18 +1,18 @@
 function getComputerChoice() {
     const weapons = ["ROCK", "PAPER", "SCISSORS"];
     let weapon = weapons [Math.floor(Math.random() * weapons.length)];
+
     return weapon;
 }
 
 function getPlayerChoice() {
-        
         var userWeapon = "";
 
         while (userWeapon != "ROCK" && userWeapon != "PAPER" && userWeapon != "SCISSORS") {
                 var userWeapon = prompt("Please enter ROCK, PAPER, or SCISSORS").toUpperCase();
                 alert ("You chose " + userWeapon);
                 if (userWeapon != "ROCK" && userWeapon != "PAPER" && userWeapon != "SCISSORS") {
-                alert ("INVALID ENTRY! Please enter only Rock, ROCK, PAPER, or SCISSORS");
+                alert ("INVALID ENTRY! Please enter only ROCK, PAPER, or SCISSORS");
                 } else {
                         break;
                 }
@@ -21,13 +21,10 @@ function getPlayerChoice() {
         return userWeapon;
 }
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-alert("Player: " + playerSelection + " vs. Computer: " + computerSelection);
-
 function playRound(playerSelection, computerSelection) {
         let playerScore = 0;
         let computerScore = 0;
+
         if (computerSelection === "ROCK" && playerSelection === "ROCK") {
                 alert("We have a tie!");
         } else if (computerSelection === "ROCK" && playerSelection === "PAPER") {
@@ -55,8 +52,35 @@ function playRound(playerSelection, computerSelection) {
         } else {
                 alert("INVALID ENTRY!");
         }
-        return ("Player: " + playerScore + " vs. Computer: " + computerScore);
+        
+        return [playerScore, computerScore];
 }
 
-alert (playRound(playerSelection, computerSelection));
+function game() {
+        let playerScore = 0;
+        let computerScore = 0;
+        let currentScore = [];
+        let finalScore = [];
 
+        for (i = 0; i < 5; i++) {
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+        alert("Player: " + playerSelection + " vs. Computer: " + computerSelection);
+        currentScore = playRound(playerSelection, computerSelection);
+        playerScore += currentScore [0];
+        computerScore += currentScore [1];
+        finalScore = [playerScore, computerScore];
+        }
+
+        if (playerScore > computerScore) {
+                alert ("Player Wins! Player: " + playerScore + " to Computer: " + computerScore);
+        } else if (computerScore > playerScore) {
+                alert ("Computer Wins! Computer: " + computerScore + " to Player: " + playerScore);
+        } else {
+                alert ("Tie Game! Player: " + playerScore + " to Computer: " + computerScore);
+        }
+
+        return finalScore;
+}
+
+game();
