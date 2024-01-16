@@ -21,29 +21,42 @@ function getPlayerChoice() {
         return userWeapon;
 }
 
-let playerSelection = getPlayerChoice();
-let computerSelection = getComputerChoice();
+const playerSelection = getPlayerChoice();
+const computerSelection = getComputerChoice();
 alert("Player: " + playerSelection + " vs. Computer: " + computerSelection);
 
-
-if (computerSelection === "ROCK" && playerSelection === "ROCK") {
-    alert("We have a tie!");
-} else if (computerSelection === "ROCK" && playerSelection === "PAPER") {
-        alert("Player wins! PAPER beats ROCK.");
-} else if (computerSelection === "ROCK" && playerSelection === "SCISSORS") {
-        alert("Computer wins! ROCK beats SCISSORS.");
-} else if (computerSelection === "PAPER" && playerSelection === "PAPER") {
-        alert("We have a tie!");
-} else if (computerSelection === "PAPER" && playerSelection === "SCISSORS") {
-        alert("Player wins! SCISSORS beat PAPER.");
-} else if (computerSelection === "PAPER" && playerSelection === "ROCK") {
-        alert("Computer wins! PAPER beats ROCK.");
-} else if (computerSelection === "SCISSORS" && playerSelection === "SCISSORS") {
-        alert("We have a tie!");
-} else if (computerSelection === "SCISSORS" && playerSelection === "ROCK") {
-        alert("Player wins! ROCK beats SCISSORS.");
-} else if (computerSelection === "SCISSORS" && playerSelection === "PAPER") {
-        alert("Computer wins! SCISSORS beats PAPER.");
-} else {
-        alert("Invalid entry!");
+function playRound(playerSelection, computerSelection) {
+        let playerScore = 0;
+        let computerScore = 0;
+        if (computerSelection === "ROCK" && playerSelection === "ROCK") {
+                alert("We have a tie!");
+        } else if (computerSelection === "ROCK" && playerSelection === "PAPER") {
+                alert("Player wins! PAPER beats ROCK.");
+                playerScore += 1;
+        } else if (computerSelection === "ROCK" && playerSelection === "SCISSORS") {
+                alert("Computer wins! ROCK beats SCISSORS.");
+                computerScore += 1;
+        } else if (computerSelection === "PAPER" && playerSelection === "PAPER") {
+                alert("We have a tie!");
+        } else if (computerSelection === "PAPER" && playerSelection === "SCISSORS") {
+                alert("Player wins! SCISSORS beat PAPER.");
+                playerScore += 1;
+        } else if (computerSelection === "PAPER" && playerSelection === "ROCK") {
+                alert("Computer wins! PAPER beats ROCK.");
+                computerScore += 1;
+        } else if (computerSelection === "SCISSORS" && playerSelection === "SCISSORS") {
+                alert("We have a tie!");
+        } else if (computerSelection === "SCISSORS" && playerSelection === "ROCK") {
+                alert("Player wins! ROCK beats SCISSORS.");
+                playerScore += 1;
+        } else if (computerSelection === "SCISSORS" && playerSelection === "PAPER") {
+                alert("Computer wins! SCISSORS beats PAPER.");
+                computerScore += 1;
+        } else {
+                alert("INVALID ENTRY!");
+        }
+        return ("Player: " + playerScore + " vs. Computer: " + computerScore);
 }
+
+alert (playRound(playerSelection, computerSelection));
+
