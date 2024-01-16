@@ -6,10 +6,10 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-        var userWeapon = "";
+        let userWeapon = "";
 
         while (userWeapon != "ROCK" && userWeapon != "PAPER" && userWeapon != "SCISSORS") {
-                var userWeapon = prompt("Please enter ROCK, PAPER, or SCISSORS").toUpperCase();
+                userWeapon = prompt("Please enter ROCK, PAPER, or SCISSORS").toUpperCase();
                 alert ("You chose " + userWeapon);
                 if (userWeapon != "ROCK" && userWeapon != "PAPER" && userWeapon != "SCISSORS") {
                 alert ("INVALID ENTRY! Please enter only ROCK, PAPER, or SCISSORS");
@@ -17,7 +17,7 @@ function getPlayerChoice() {
                         break;
                 }
         }
-
+        
         return userWeapon;
 }
 
