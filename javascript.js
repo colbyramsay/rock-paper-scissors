@@ -83,27 +83,44 @@ function game() {
         return finalScore;
 }
 
+function gameBtn(playerSelection) {
+        let playerScore = 0;
+        let computerScore = 0;
+        let currentScore = [];
+        let finalScore = [];
+
+        //for (i = 0; i < 5; i++) {
+        //const playerSelection = "ROCK";
+        const computerSelection = getComputerChoice();
+        alert("Player: " + playerSelection + " vs. Computer: " + computerSelection);
+        currentScore = playRound(playerSelection, computerSelection);
+        playerScore += currentScore [0];
+        computerScore += currentScore [1];
+        finalScore = [playerScore, computerScore];
+        //}
+
+        if (playerScore > computerScore) {
+                alert ("Player Wins! Player: " + playerScore + " to Computer: " + computerScore);
+        } else if (computerScore > playerScore) {
+                alert ("Computer Wins! Computer: " + computerScore + " to Player: " + playerScore);
+        } else {
+                alert ("Tie Game! Player: " + playerScore + " to Computer: " + computerScore);
+        }
+
+        return finalScore;
+}
+
+
 //game();
 
-/*
-const buttonRock = document.querySelector('#buttonRock')
-buttonRock.addEventListener("click", helloRock)
-*/
+document.querySelector('#buttonRock').addEventListener("click", function () {
+        gameBtn("ROCK");
+});
 
-document.querySelector('#buttonRock').addEventListener("click", helloRock)
+document.querySelector('#buttonPaper').addEventListener("click", function () {
+        gameBtn("PAPER");
+});
 
-document.querySelector('#buttonPaper').addEventListener("click", helloPaper)
-
-document.querySelector('#buttonScissors').addEventListener("click", helloScissors)
-
-function helloRock() {
-        alert ("Hello ROCK!");
-}
-
-function helloPaper() {
-        alert ("Hello PAPER!");
-}
-
-function helloScissors() {
-        alert ("Hello SCISSORS!");
-}
+document.querySelector('#buttonScissors').addEventListener("click", function () {
+        gameBtn("SCISSORS");
+});
