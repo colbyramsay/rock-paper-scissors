@@ -85,14 +85,16 @@ function game() {
 
 //game();
 
+/*
 const buttonRock = document.querySelector('#buttonRock')
 buttonRock.addEventListener("click", helloRock)
+*/
 
-const buttonPaper = document.querySelector('#buttonPaper')
-buttonPaper.addEventListener("click", helloPaper)
+document.querySelector('#buttonRock').addEventListener("click", helloRock)
 
-const buttonScissors = document.querySelector('#buttonScissors')
-buttonScissors.addEventListener("click", helloScissors)
+document.querySelector('#buttonPaper').addEventListener("click", helloPaper)
+
+document.querySelector('#buttonScissors').addEventListener("click", helloScissors)
 
 function helloRock() {
         alert ("Hello ROCK!");
