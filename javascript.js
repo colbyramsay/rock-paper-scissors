@@ -83,4 +83,4 @@ function game() {
         return finalScore;
 }
 
-game();
+//game();
