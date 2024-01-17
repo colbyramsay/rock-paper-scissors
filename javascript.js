@@ -86,15 +86,12 @@ function game() {
 //game();
 
 const buttonRock = document.querySelector('#buttonRock')
-
 buttonRock.addEventListener("click", helloRock)
 
 const buttonPaper = document.querySelector('#buttonPaper')
-
 buttonPaper.addEventListener("click", helloPaper)
 
 const buttonScissors = document.querySelector('#buttonScissors')
-
 buttonScissors.addEventListener("click", helloScissors)
 
 function helloRock() {
