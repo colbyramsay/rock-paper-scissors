@@ -1,10 +1,4 @@
-function getComputerChoice() {
-    const weapons = ["ROCK", "PAPER", "SCISSORS"];
-    let weapon = weapons [Math.floor(Math.random() * weapons.length)];
-
-    return weapon;
-}
-
+/*
 function getPlayerChoice() {
         let userWeapon = "";
 
@@ -20,11 +14,20 @@ function getPlayerChoice() {
         
         return userWeapon;
 }
+*/
+
+let playerScore = 0;
+let computerScore = 0;
+
+function getComputerChoice() {
+        const weapons = ["ROCK", "PAPER", "SCISSORS"];
+        let weapon = weapons [Math.floor(Math.random() * weapons.length)];
+        
+        return weapon;
+}
 
 function playRound(playerSelection, computerSelection) {
-        let playerScore = 0;
-        let computerScore = 0;
-
+        
         if (computerSelection === "ROCK" && playerSelection === "ROCK") {
                 content2.textContent = ("We have a tie!");
                 container.appendChild(content2);
@@ -59,97 +62,123 @@ function playRound(playerSelection, computerSelection) {
                 container.appendChild(content2);
                 computerScore += 1;
         } else {
-                content2.textContent = ("INVALID ENTRY!");
+                content2.textContent = ("ERROR!");
                 container.appendChild(content2);
         }
         
         return [playerScore, computerScore];
 }
 
-function game() {
-        let playerScore = 0;
-        let computerScore = 0;
-        let currentScore = [];
-        let finalScore = [];
-
-        for (i = 0; i < 5; i++) {
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        alert("Player: " + playerSelection + " vs. Computer: " + computerSelection);
-        currentScore = playRound(playerSelection, computerSelection);
-        playerScore += currentScore [0];
-        computerScore += currentScore [1];
-        finalScore = [playerScore, computerScore];
-        }
-
-        if (playerScore > computerScore) {
-                alert ("Player: " + playerScore + " to Computer: " + computerScore);
-        } else if (computerScore > playerScore) {
-                alert ("Computer: " + computerScore + " to Player: " + playerScore);
-        } else {
-                alert ("Player: " + playerScore + " to Computer: " + computerScore);
-        }
-
-        return finalScore;
-}
-
 function gameBtn(playerSelection) {
-        let playerScore = 0;
-        let computerScore = 0;
+        
         let currentScore = [];
-        let finalScore = [];
 
-        //for (i = 0; i < 5; i++) {
-        //const playerSelection = "ROCK";
         const computerSelection = getComputerChoice();
+
         content1.textContent = ("Player: " + playerSelection + " vs. Computer: " + computerSelection);
         container.appendChild(content1);
+
         currentScore = playRound(playerSelection, computerSelection);
-        playerScore += currentScore [0];
-        computerScore += currentScore [1];
-        finalScore = [playerScore, computerScore];
-        //}
 
-        if (playerScore > computerScore) {
-                content3.textContent = ("Player: " + playerScore + " to Computer: " + computerScore);
-                container.appendChild(content3);
+        let playerScore = currentScore [0];
+        let computerScore = currentScore [1];
+
+        if (playerScore > computerScore && playerScore == 5) {
+                currentPlayerScore.textContent = (playerScore);
+                displayPlayerScore.appendChild(currentPlayerScore);
+
+                currentComputerScore.textContent = (computerScore);
+                displayComputerScore.appendChild(currentComputerScore);
+
+                content2.textContent = ("GAME OVER! Player wins.");
+                container.appendChild(content2);
+                
+                let userChoice = "";
+
+                setTimeout (function() {
+                        userChoice = prompt("Would you like to play again? Y or N").toUpperCase();
+                        if (userChoice == "Y") {
+                                location.reload();
+                        } else {
+                                alert ("Thanks for playing! See you next time.");
+                                location.reload();
+                        }
+                }, 100);
+        } else if (playerScore > computerScore) {
+                currentPlayerScore.textContent = (playerScore);
+                displayPlayerScore.appendChild(currentPlayerScore);
+
+                currentComputerScore.textContent = (computerScore);
+                displayComputerScore.appendChild(currentComputerScore);
+        } else if (computerScore > playerScore && computerScore == 5) {
+                currentPlayerScore.textContent = (playerScore);
+                displayPlayerScore.appendChild(currentPlayerScore);
+
+                currentComputerScore.textContent = (computerScore);
+                displayComputerScore.appendChild(currentComputerScore);
+
+                content2.textContent = ("GAME OVER! Computer wins.");
+                container.appendChild(content2);
+
+                let userChoice = "";
+
+                setTimeout (function() {
+                        userChoice = prompt("Would you like to play again? Y or N").toUpperCase();
+                        if (userChoice == "Y") {
+                                location.reload();
+                        } else {
+                                alert ("Thanks for playing! See you next time.");
+                                location.reload();
+                        }
+                }, 100);
         } else if (computerScore > playerScore) {
-                content3.textContent = ("Computer: " + computerScore + " to Player: " + playerScore);
-                container.appendChild(content3);
-        } else {
-                content3.textContent = ("Player: " + playerScore + " to Computer: " + computerScore);
-                container.appendChild(content3);
-        }
+                currentPlayerScore.textContent = (playerScore);
+                displayPlayerScore.appendChild(currentPlayerScore);
 
-        return finalScore;
+                currentComputerScore.textContent = (computerScore);
+                displayComputerScore.appendChild(currentComputerScore);
+
+        } else if (computerScore == playerScore) {
+                currentPlayerScore.textContent = (playerScore);
+                displayPlayerScore.appendChild(currentPlayerScore);
+
+                currentComputerScore.textContent = (computerScore);
+                displayComputerScore.appendChild(currentComputerScore);
+        }
 }
 
-
-//game();
-
-document.querySelector('#buttonRock').addEventListener("click", function () {
+const buttonRock = document.querySelector('#buttonRock')
+buttonRock.addEventListener("click", function () {
         gameBtn("ROCK");
 });
 
-document.querySelector('#buttonPaper').addEventListener("click", function () {
+const buttonPaper = document.querySelector('#buttonPaper')
+buttonPaper.addEventListener("click", function () {
         gameBtn("PAPER");
 });
 
-document.querySelector('#buttonScissors').addEventListener("click", function () {
+const buttonScissors = document.querySelector('#buttonScissors')
+buttonScissors.addEventListener("click", function () {
         gameBtn("SCISSORS");
 });
 
 const container = document.querySelector('#container');
 
 const content1 = document.createElement('div');
-content1.classList.add('content1');
+content1.classList.add('content');
 
 const content2 = document.createElement('div');
-content1.classList.add('content2');
+content2.classList.add('content-bold');
 
 const content3 = document.createElement('div');
-content1.classList.add('content3');
+content3.classList.add('content');
 
-//content.textContent = 'This is the glorious text-content!';
+const displayPlayerScore = document.querySelector('#displayPlayerScore');
 
-//container.appendChild(content);
+const currentPlayerScore = document.createElement('div');
+currentPlayerScore.classList.add('currentScores');
+
+const displayComputerScore = document.querySelector('#displayComputerScore');
+
+const currentComputerScore = document.createElement('div');
+currentComputerScore.classList.add('currentScores');
